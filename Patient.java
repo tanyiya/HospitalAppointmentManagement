@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
-public class Patient {
+public class Patient extends Person {
     private String patientID;
     private Doctor doctor;
     private ArrayList<MedicalRecord> medicalRecords;
@@ -30,20 +30,10 @@ public class Patient {
         medicalRecords.add(record);
     }
 
-    public MedicalRecord getMedicalRecord(String recordID) {
-        for (MedicalRecord record : medicalRecords) {
-            if (record.getRecordID().equals(recordID)) {
-                return record;
-            }
-        }
-        System.out.println("Medical Record not found.");
-        return null;
-    }
-
     public void printMedicalRecords() {
         System.out.println("Medical Records of " + patientID);
         for (MedicalRecord r : medicalRecords) {
-            System.out.println(r);
+            r.printDetails();
         }
     }
 }

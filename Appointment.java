@@ -16,4 +16,11 @@ public class Appointment {
     public void cancel() {
         System.out.println("Appointment " + appointmentID + " has been cancelled.");
     }
+
+    public void printDetails() {
+        System.out.println("Appointment ID: " + appointmentID);
+        System.out.println("Patient ID: " + patientID);
+        System.out.println("Doctor: " + doctor.getDoctorID());
+        System.out.println("Date and Time: " + dateTime);
+    }
 }

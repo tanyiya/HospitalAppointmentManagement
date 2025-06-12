@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Doctor {
+public class Doctor extends Person {
     private String doctorID;
     private String specialization;
     private ArrayList<Appointment> appointments;
@@ -15,24 +15,14 @@ public class Doctor {
         appointments.add(appointment);
     }
 
-    public void createMedicalRecord(Patient patient, String recordID) {
-        MedicalRecord record = new MedicalRecord(recordID);
-        patient.addMedicalRecord(record);
-    }
-
-    public void addMedicalRecordEntry(Patient patient, String recordID, String entry) {
-        MedicalRecord record = patient.getMedicalRecord(recordID);
-        if (record != null) {
-            record.addEntry(entry);
-        } else {
-            System.out.println("Medical Record not found.");
-        }
+    public String getDoctorID() {
+        return doctorID;
     }
 
     public void viewAppointments() {
         System.out.println("Appointments of  " + doctorID);
         for (Appointment a : appointments) {
-            System.out.println(a);
+            a.printDetails();
         }
     }
 
