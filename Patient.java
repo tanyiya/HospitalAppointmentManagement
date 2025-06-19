@@ -31,7 +31,7 @@ public class Patient extends Person {
 
     public String printMedicalRecords() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Medical Records of ").append(patientID).append(":\n");
+        sb.append("List of Medical Records of ").append(patientID).append(":\n");
 
         if (medicalRecords.isEmpty()) {
             sb.append("No records available.\n");

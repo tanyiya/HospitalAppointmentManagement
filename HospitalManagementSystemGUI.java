@@ -23,7 +23,7 @@ public class HospitalManagementSystemGUI {
         // Create menu bar
         JMenuBar menuBar = new JMenuBar();
 
-        // Create menus
+        // Create menu
         JMenu fileMenu = new JMenu("Program");
         JMenu doctorMenu = new JMenu("Doctors");
         JMenu patientMenu = new JMenu("Patients");
@@ -310,6 +310,7 @@ public class HospitalManagementSystemGUI {
                     record.addEntry(entry);
                     outputArea.append("Medical record entry added successfully:\n");
                     outputArea.append(record.getDetails());
+                    outputArea.append("\n");
                 } else {
                     JOptionPane.showMessageDialog(frame, "No medical records found for this patient",
                             "Error", JOptionPane.ERROR_MESSAGE);
