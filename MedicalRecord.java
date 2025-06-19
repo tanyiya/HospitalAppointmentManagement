@@ -11,15 +11,32 @@ public class MedicalRecord {
         this.details = new ArrayList<>();
     }
 
+    public String getRecordID() {
+        return recordID;
+    }
+
     public void addEntry(String entry) {
         details.add(entry);
     }
 
-    public void printDetails() {
-        System.out.println("Medical Record ID: " + recordID);
-        System.out.println("Patient ID: " + patientID);
+    public String getDetails() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Medical Record ID: ").append(recordID).append("\n");
+        sb.append("Patient ID: ").append(patientID).append("\n");
+
         for (String entry : details) {
-            System.out.println(entry);
+            sb.append("- ").append(entry).append("\n");
         }
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "MedicalRecord{" +
+                "patientID='" + patientID + '\'' +
+                ", recordID='" + recordID + '\'' +
+                ", details=" + details +
+                '}';
     }
 }

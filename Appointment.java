@@ -13,8 +13,17 @@ public class Appointment {
         this.dateTime = dateTime;
     }
 
-    public void cancel() {
-        System.out.println("Appointment " + appointmentID + " has been cancelled.");
+    public void cancelAppointment(Appointment appointment) {
+        if (appointment != null) {
+            System.out.println("Appointment with ID " + appointment.appointmentID + " has been cancelled.");
+            appointment.doctor.cancelAppointment(appointment);
+        } else {
+            System.out.println("No appointment found to cancel.");
+        }
+    }
+
+    public String getDetails() {
+        return "Appointment ID: " + appointmentID + ", DateTime: " + dateTime + ", Patient: " + patientID;
     }
 
     public void printDetails() {

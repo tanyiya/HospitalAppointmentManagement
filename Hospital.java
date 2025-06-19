@@ -21,8 +21,8 @@ public class Hospital {
     }
 
     public Doctor findDoctorById(String id) {
-        for (Doctor d : doctors){
-            if (d.getDoctorID().equals(id)){
+        for (Doctor d : doctors) {
+            if (d.getDoctorID().equals(id)) {
                 return d;
             }
         }
@@ -38,15 +38,23 @@ public class Hospital {
         return null;
     }
 
-    public void listDoctors(){
-        System.out.print("--- Doctor List ---");
-        for (Doctor d : doctors) 
-            System.out.println(d);
+    public String listDoctors() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Doctor List ---\n");
+
+        for (Doctor d : doctors) {
+            sb.append(d.toString()).append("\n");
+        }
+
+        return sb.toString();
     }
 
-    public void listPatients() {
-        System.out.println("--- Patient List ---");
-        for (Patient p : patients)
-            System.out.println(p);
+    public String listPatients() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("--- Patient List ---\n");
+        for (Patient p : patients) {
+            sb.append(p.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }

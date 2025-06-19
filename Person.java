@@ -3,7 +3,7 @@ public class Person {
     protected int age;
     protected String gender;
 
-    public Person(String name, int age, String gender){
+    public Person(String name, int age, String gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -12,5 +12,5 @@ public class Person {
     public void displayInfo() {
         System.out.printf("Name: %s | Age: %d | Gender: %s%n", name, age, gender);
     }
-    
+
 }

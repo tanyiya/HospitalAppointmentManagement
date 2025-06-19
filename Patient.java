@@ -3,12 +3,11 @@ import java.time.LocalDateTime;
 
 public class Patient extends Person {
     private String patientID;
-    private Doctor doctor;
     private ArrayList<MedicalRecord> medicalRecords;
 
-    public Patient(String patientID) {
+    public Patient(String name, String gender, int age, String patientID) {
+        super(name, age, gender);
         this.patientID = patientID;
-        this.doctor = null; // Initially no doctor assigned
         this.medicalRecords = new ArrayList<>();
     }
 
@@ -19,21 +18,35 @@ public class Patient extends Person {
     public void bookAppointment(Doctor doctor, LocalDateTime dateTime, String appointmentID) {
         Appointment appointment = new Appointment(appointmentID, this.getPatientID(), doctor, dateTime);
         doctor.addAppointment(appointment);
-        this.doctor = doctor;
-    }
-
-    public void cancelAppointment(Appointment appointment) {
-        appointment.cancel();
+        System.out.println("Appointment booked with Doctor " + doctor + " on " + dateTime);
     }
 
     public void addMedicalRecord(MedicalRecord record) {
         medicalRecords.add(record);
     }
 
-    public void printMedicalRecords() {
-        System.out.println("Medical Records of " + patientID);
-        for (MedicalRecord r : medicalRecords) {
-            r.printDetails();
-        }
+    public ArrayList<MedicalRecord> getMedicalRecords() {
+        return medicalRecords;
     }
+
+    public String printMedicalRecords() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Medical Records of ").append(patientID).append(":\n");
+
+        if (medicalRecords.isEmpty()) {
+            sb.append("No records available.\n");
+        } else {
+            for (MedicalRecord r : medicalRecords) {
+                sb.append(r.getDetails()).append("\n");
+            }
+        }
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Patient ID: " + patientID + ", Name: " + name + ", Age: " + age + ", Gender: " + gender;
+    }
+
 }
