@@ -33,7 +33,7 @@ The usage of ArrayList allows effecient addition, removal, retrieval and iterati
 
 ##### Inheritance
 The system uses inheritance to reduce code redundancy. A base class ```Person``` contains common attributes such as ```name```, ```age``` and ```gender```. Both ```Doctor``` and ```Patient``` classes extend ```Person``` and inherit these properties. 
-```java
+<code>```</code> java
 public class Person {
     protected String name;
     protected int age;
