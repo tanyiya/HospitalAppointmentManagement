@@ -31,6 +31,8 @@ In this project, ArrayList is used to manage dynamic collections of object. To u
 
 The usage of ArrayList allows effecient addition, removal, retrieval and iteration of elements stored, using the built in methods alone. Examples of built in methods implemented are ```add()``` and ```remove()```.
 
+##### Class Relationship
+
 ##### Inheritance
 The system uses inheritance to reduce code redundancy. A base class ```Person``` contains common attributes such as ```name```, ```age``` and ```gender```. Both ```Doctor``` and ```Patient``` classes extend ```Person``` and inherit these properties. 
 ``` java
@@ -55,6 +57,45 @@ public class Patient extends Person {
 ```
 This hierarchical relationship produces cleaner and more maintainable code through a structured class inheritance tree. 
 
+##### Polymorphism
+Polymorphism is achieved through method overriding. For example, the ```toString()``` method is overridden in multiple classes to display specific details depending on the object type. 
+```java
+@Override
+public String toString() {
+    return "Doctor ID: " + doctorID + ", Name: Dr. " + name;
+}
+```
+This allows flexible object handling, especially when displaying information in the GUI.
+
+
+##### Exception Handling
+A custom exception class named ```InvalidAppoinmentException``` is implemented to handle appointment-related errors.
+```java
+public class InvalidAppointmentException extends Exception {
+    public InvalidAppointmentException(String message) {
+        super("Invalid appointment: " + message);
+    }
+}
+```
+It is used when a doctor or patient is not found:
+>- The system gets the patient ID, doctor ID and appointment ID from the form.
+>- It checks if the doctor or patient exists.
+>- If either is missing, it throws a custom exception:```InvalidAppointmentException```.
+>- The error is caught and shown to the user using a pop-up message.
+
+```java
+try {
+    // If patient and doctor is null, throw an exception
+    if (patient == null || doctor == null) {
+        throw new InvalidAppointmentException("Patient or Doctor not found");
+    }
+
+} catch (Exception e) {
+        JOptionPane.showMessageDialog(frame, "Error scheduling appointment: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+}
+```
+This makes sure the system shows helpful messages to the user if anything goes wrong, like missing IDs or wrong input. 
 
 #### Sample Output + Screenshots of Program
 
