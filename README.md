@@ -17,8 +17,14 @@
 #### Table of Content
 1. [Project Description](#project-desc)
 2. [Implementation of Concepts](#imp-concept)
-    - [Implementation of ArrayList](#arr-list)
-    - [Implementation of Class Relationship](#imp-classrel)
+    - [ArrayList](#arr-list)
+    - [Class Relationship](#imp-classrel)
+        - [Assocation](#assoc)
+        - [Aggregation](#aggre)
+        - [Composition](#compo)
+    - [Inheritance](#inherit)
+    - [Polymorphism](#poly)
+    - [Exception Handling](#exp-handling)
 3. [Sample Output + Screenshots of Program](#output-sc)
 4. [UML Class Diagram](#uml-dia)
 
@@ -35,30 +41,46 @@ This system improves workflow, minimizes human error in scheduling and ensures o
 
 #### Implementation of Concepts {#imp-concept}
 
-###### Implementation of ArrayList {#arr-list}
+##### ArrayList {#arr-list}
 In this project, ArrayList is used to manage dynamic collections of object. To use ArrayList, we import the ```java.util.ArrayList``` package on each class. Below are the classes that implements ArrayList:
->1. Hospital
->- ```private List<Doctor> doctors;``` : Records list of Doctor in a Hospital
->- ```private List<Patient> patients;``` : Records list of Patient in a Hospital
->2. Patient
->- ```private ArrayList<MedicalRecord> medicalRecords;``` : Records list of Medical Record Histories of a Patient
->3. Doctor
->- ```private ArrayList<Appointment> appointments;``` : Records list of Appointments of a doctor
->4. Medical Record
->- ```private ArrayList<String> details;``` : Records list of details entry of a Patient's Medical Record
+1. Hospital
+- ```private List<Doctor> doctors;``` : Records list of Doctor in a Hospital
+- ```private List<Patient> patients;``` : Records list of Patient in a Hospital
+2. Patient
+- ```private ArrayList<MedicalRecord> medicalRecords;``` : Records list of Medical Record Histories of a Patient
+3. Doctor
+- ```private ArrayList<Appointment> appointments;``` : Records list of Appointments of a doctor
+4. Medical Record
+- ```private ArrayList<String> details;``` : Records list of details entry of a Patient's Medical Record
 
 The usage of ArrayList allows effecient addition, removal, retrieval and iteration of elements stored, using the built in methods alone. Examples of built in methods implemented are ```add()``` and ```remove()```, implemented in adding doctor and patient, adding medical record of patient, adding detail entry in medical record and add or remove appointments.
 
-###### Implementation of Class Relationship {#imp-classrel}
-1. Association
+##### Class Relationship {#imp-classrel}
+In this system, class relationship are expressed using Association, Aggregation and Composition concept.
+1. ##### Association {#assoc}
+Association relationship is implemented when classes connect or interact with each other, but their lifecycles are not tied to one another. An object of one class can exist without an object of the other. Association is implemented in:
 
-2. Aggregation
+* **`Doctor` and `Appointment`:** A `Doctor` is associated with one or more `Appointment`s. An appointment is a separate concept that links a doctor and a patient, and its lifecycle is managed independently. The `Doctor` class contains an `ArrayList` of `Appointment` objects (`appointments: ArrayList<Appointment>`).
+<br>
 
-3. Composition
+* **`Patient` and `Appointment`:** Similarly, a `Patient` is associated with one or more `Appointment`s. The `Appointment` is a standalone object that contains details about the patient and doctor. The `Appointment` class stores the `patientID` and `doctor` information, creating a link between the involved objects.
+<br>
 
-##### Class Relationship
+* **`HospitalManagementSystemGui` and `Hospital`:** The GUI class interacts with the `Hospital` object to manage the system, but the core `Hospital` data can exist independently of the graphical interface. The `HospitalManagementSystemGui` class has an instance variable of type `Hospital` (`hospital: Hospital`) to access and manipulate its data.
 
-##### Inheritance
+2. ##### Aggregation {#aggre}
+Aggregation relationship is a more specific type of association that represents a "whole-part" relationship, which a "Part" can exist without a "Whole". In this project, Aggregation is implemented in **Hospital ↔ Doctor** and **Hospital ↔ Patient** class.
+
+The Hospital class has a `List` of `Doctor` objects (`doctors: List<Doctor>`). The `Hospital` class can add (`addDoctor`) and find (`findDoctorById`, `listDoctors`) doctors from its list. While the `Hospital` manages this list, the `Doctor` objects have their own independent lifecycles. Removing a `Hospital` object would not necessarily mean the `Doctor` objects are deleted from the system. The same applies to ```Patient```.
+<br>
+
+3. ##### Composition {#compo}
+Composition is a strong form of aggregation, which differs by "part" cannot exist without a "whole". In this project, composition is shown in the **Patient ↔ MedicalRecord** class.
+
+The `Patient` class contains an `ArrayList` of `MedicalRecord` objects (`medicalRecords: ArrayList<MedicalRecord>`). When a `Patient` object is created, it is responsible for creating and managing its `MedicalRecord` objects. If a `Patient` object is deleted from the system, all of its associated `MedicalRecord` objects must also be deleted.
+
+
+##### Inheritance {#inherit}
 The system uses inheritance to reduce code redundancy. A base class ```Person``` contains common attributes such as ```name```, ```age``` and ```gender```. Both ```Doctor``` and ```Patient``` classes extend ```Person``` and inherit these properties. 
 ``` java
 public class Person {
@@ -82,7 +104,7 @@ public class Patient extends Person {
 ```
 This hierarchical relationship produces cleaner and more maintainable code through a structured class inheritance tree. 
 
-##### Polymorphism
+##### Polymorphism {#poly}
 Polymorphism is achieved through method overriding. For example, the ```toString()``` method is overridden in multiple classes to display specific details depending on the object type. 
 ```java
 @Override
@@ -93,7 +115,7 @@ public String toString() {
 This allows flexible object handling, especially when displaying information in the GUI.
 
 
-##### Exception Handling
+##### Exception Handling {#exp-handling}
 A custom exception class named ```InvalidAppoinmentException``` is implemented to handle appointment-related errors.
 ```java
 public class InvalidAppointmentException extends Exception {
