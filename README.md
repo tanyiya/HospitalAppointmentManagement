@@ -151,4 +151,7 @@ This makes sure the system shows helpful messages to the user if anything goes w
 </figure>
 
 #### UML Class Diagram
-need the drawio extension to edit eh
+<figure>
+<figcaption>Class Diagram for Hospital Appointment System<figcaption>
+    <img src="/img/ClassDiagram.png">
+</figure>
