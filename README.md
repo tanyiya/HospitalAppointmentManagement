@@ -152,6 +152,6 @@ This makes sure the system shows helpful messages to the user if anything goes w
 
 #### UML Class Diagram
 <figure>
-<figcaption>Class Diagram for Hospital Appointment System<figcaption>
+<figcaption>Class Diagram for Hospital Appointment Management System<figcaption>
     <img src="/img/ClassDiagram.png">
 </figure>
