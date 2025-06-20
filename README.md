@@ -23,6 +23,15 @@
 4. [UML Class Diagram](#uml-dia)
 
 #### Project Description {#project-desc}
+The Hospital Appointment Management System is a Java-based desktop application developed to help hospital administrators efficiently manage patient information, doctor records, appoinment and medical records.
+
+This system features a user-friendly Java Swing GUI, allowing administrators to: 
+>- Add new doctors and patients
+>- Schedule and cancel appointments
+>- View doctor-specific appoinment schedules
+>- Create and update medical records for patients
+
+This system improves workflow, minimizes human error in scheduling and ensures organized data management in a clinical setting. 
 
 #### Implementation of Concepts {#imp-concept}
 
@@ -47,8 +56,72 @@ The usage of ArrayList allows effecient addition, removal, retrieval and iterati
 
 3. Composition
 
+##### Class Relationship
+
+##### Inheritance
+The system uses inheritance to reduce code redundancy. A base class ```Person``` contains common attributes such as ```name```, ```age``` and ```gender```. Both ```Doctor``` and ```Patient``` classes extend ```Person``` and inherit these properties. 
+``` java
+public class Person {
+    protected String name;
+    protected int age;
+    protected String gender;
+}
+
+public class Doctor extends Person {
+    // doctor-specific attributes
+    private String doctorID;
+    private String specialization;
+    private ArrayList<Appointment> appointments;
+}
+
+public class Patient extends Person {
+    // patient-specific attributes
+    private String patientID;
+    private ArrayList<MedicalRecord> medicalRecords;
+}
+```
+This hierarchical relationship produces cleaner and more maintainable code through a structured class inheritance tree. 
+
+##### Polymorphism
+Polymorphism is achieved through method overriding. For example, the ```toString()``` method is overridden in multiple classes to display specific details depending on the object type. 
+```java
+@Override
+public String toString() {
+    return "Doctor ID: " + doctorID + ", Name: Dr. " + name;
+}
+```
+This allows flexible object handling, especially when displaying information in the GUI.
 
 
+##### Exception Handling
+A custom exception class named ```InvalidAppoinmentException``` is implemented to handle appointment-related errors.
+```java
+public class InvalidAppointmentException extends Exception {
+    public InvalidAppointmentException(String message) {
+        super("Invalid appointment: " + message);
+    }
+}
+```
+It is used when a doctor or patient is not found:
+>- The system gets the patient ID, doctor ID and appointment ID from the form.
+>- It checks if the doctor or patient exists.
+>- If either is missing, it throws a custom exception:```InvalidAppointmentException```.
+>- The error is caught and shown to the user using a pop-up message.
+
+
+```java
+try {
+    // If patient and doctor is null, throw an exception
+    if (patient == null || doctor == null) {
+        throw new InvalidAppointmentException("Patient or Doctor not found");
+    }
+
+} catch (Exception e) {
+        JOptionPane.showMessageDialog(frame, "Error scheduling appointment: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+}
+```
+This makes sure the system shows helpful messages to the user if anything goes wrong, like missing IDs or wrong input. 
 
 #### Sample Output + Screenshots of Program {#output-sc}
 
@@ -167,3 +240,7 @@ Patient ID: P001, Name: Tan Ya Ya, Age: 1, Gender: Female
 ```
 
 #### UML Class Diagram {#uml-dia}
+<figure>
+<figcaption>Class Diagram for Hospital Appointment Management System<figcaption>
+    <img src="/img/ClassDiagram.png">
+</figure>
