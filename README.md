@@ -53,6 +53,7 @@ public class Patient extends Person {
     private ArrayList<MedicalRecord> medicalRecords;
 }
 ```
+This hierarchical relationship produces cleaner and more maintainable code through a structured class inheritance tree. 
 
 
 #### Sample Output + Screenshots of Program
