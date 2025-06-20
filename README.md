@@ -5,6 +5,13 @@
 2. Teh Ru Qian A23CS0191
 
 #### Project Description
+The Hospital Appointment Management System is a Java-based desktop application developed to help hospital administrators efficiently manage patient information, doctor records, appoinment and medical records.
+
+This system features a user-friendly Java Swing GUI, allowing administrators to: 
+>- Add new doctors and patients
+>- Schedule and cancel appointments
+>- View doctor-specific appoinment schedules
+>- Create and update medical records for patients
 
 #### Implementation of Concepts
 
