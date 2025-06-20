@@ -13,6 +13,8 @@ This system features a user-friendly Java Swing GUI, allowing administrators to:
 >- View doctor-specific appoinment schedules
 >- Create and update medical records for patients
 
+This system improves workflow, minimizes human error in scheduling and ensures organized data management in a clinical setting. 
+
 #### Implementation of Concepts
 
 ##### ArrayList
@@ -29,8 +31,27 @@ In this project, ArrayList is used to manage dynamic collections of object. To u
 
 The usage of ArrayList allows effecient addition, removal, retrieval and iteration of elements stored, using the built in methods alone. Examples of built in methods implemented are ```add()``` and ```remove()```.
 
+##### Inheritance
+The system uses inheritance to reduce code redundancy. A base class ```Person``` contains common attributes such as ```name```, ```age``` and ```gender```. Both ```Doctor``` and ```Patient``` classes extend ```Person``` and inherit these properties. 
+```java
+public class Person {
+    protected String name;
+    protected int age;
+    protected String gender;
+}
 
+public class Doctor extends Person {
+    // doctor-specific attributes
+    private String doctorID;
+    private String specialization;
+    private ArrayList<Appointment> appointments;
+}
 
+public class Patient extends Person {
+    // patient-specific attributes
+    private String patientID;
+    private ArrayList<MedicalRecord> medicalRecords;
+}```
 
 
 #### Sample Output + Screenshots of Program
