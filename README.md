@@ -8,56 +8,76 @@
 
 #### Implementation of Concepts
 
+##### ArrayList
+In this project, ArrayList is used to manage dynamic collections of object. To use ArrayList, we import the ```java.util.ArrayList``` package on each class. Below are the classes that implements ArrayList:
+>1. Hospital
+>- ```private List<Doctor> doctors;``` : Records list of Doctor in a Hospital
+>- ```private List<Patient> patients;``` : Records list of Patient in a Hospital
+>2. Patient
+>- ```private ArrayList<MedicalRecord> medicalRecords;``` : Records list of Medical Record Histories of a Patient
+>3. Doctor
+>- ```private ArrayList<Appointment> appointments;``` : Records list of Appointments of a doctor
+>4. Medical Record
+>- ```private ArrayList<String> details;``` : Records list of details entry of a Patient's Medical Record
+
+The usage of ArrayList allows effecient addition, removal, retrieval and iteration of elements stored, using the built in methods alone. Examples of built in methods implemented are ```add()``` and ```remove()```.
+
+
+
+
+
 #### Sample Output + Screenshots of Program
 
 <figure>
+<figcaption>Header of Output Program</figcaption>
     <img src="/img/header_menu.gif">
-    <figcaption>Header of Output Program</figcaption>
+    
 </figure>
 
 <figure>
-    <img src="/img/addDoc1.png">
-    <figcaption>Interface for adding a doctor.</figcaption>
+<figcaption>Interface for adding a doctor.</figcaption>
+    <img src="/img/addDoc1.png"> 
 </figure>
 
 <figure>
+<figcaption>Interface for adding a patient.</figcaption>
     <img src="/img/addPatient.png">
-    <figcaption>Interface for adding a patient.</figcaption>
 </figure>
 
 <figure>
+<figcaption>Interface of Booking Appointment.</figcaption>
     <img src="/img/bookApp.png">
-    <figcaption>Interface of Booking Appointment.</figcaption>
 </figure>
 
 <figure>
+<figcaption>Enter Doctor ID to View Appointment of the doctor.</figcaption>
     <img src="/img/viewDocApp.png">
-    <figcaption>Enter Doctor ID to View Appointment of the doctor.</figcaption>
 </figure>
 
 <figure>
+ <figcaption>Add a medical record for patient.</figcaption>
     <img src="/img/addMedRec.png">
-    <figcaption>Add a medical record for patient.</figcaption>
 </figure>
 
 <figure>
+<figcaption>Add entry of medical condition in Patient's medical record.</figcaption>
     <img src="/img/addEntry.png">
-    <figcaption>Add entry of medical condition in Patient's medical record.</figcaption>
 </figure>
 
 <figure>
+<figcaption>Enter Patient ID to view all medical records of the patient.</figcaption>
+</figure>
     <img src="/img/printMedRecord.png">
-    <figcaption>Enter Patient ID to view all medical records of the patient.</figcaption>
-</figure>
 
 <figure>
+<figcaption>Full output of the process carried out above.</figcaption>
     <img src="/img/out1.png">
-    <figcaption>Full output of the process carried out above.</figcaption>
 </figure>
 
 <figure>
+<figcaption>Additionally, the output of doctor list and patient list.<figcaption>
     <img src="/img/out2.png">
-    <figcaption>Additionally, the output of doctor list and patient list.<figcaption>
 </figure>
+
 #### UML Class Diagram
 need the drawio extension to edit eh

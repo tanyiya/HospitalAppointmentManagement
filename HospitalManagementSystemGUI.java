@@ -35,6 +35,7 @@ public class HospitalManagementSystemGUI {
         JMenuItem addDoctorItem = new JMenuItem("Add Doctor");
         JMenuItem addPatientItem = new JMenuItem("Add Patient");
         JMenuItem scheduleAppointmentItem = new JMenuItem("Schedule Appointment");
+        JMenuItem cancelAppointmentItem = new JMenuItem("Cancel Appointment");
         JMenuItem viewDoctorAppointmentsItem = new JMenuItem("View Doctor's Appointments");
         JMenuItem listDoctorsItem = new JMenuItem("List Doctors");
         JMenuItem listPatientsItem = new JMenuItem("List Patients");
@@ -49,6 +50,7 @@ public class HospitalManagementSystemGUI {
         patientMenu.add(addPatientItem);
         patientMenu.add(listPatientsItem);
         appointmentMenu.add(scheduleAppointmentItem);
+        appointmentMenu.add(cancelAppointmentItem);
         appointmentMenu.add(viewDoctorAppointmentsItem);
         medicalRecordMenu.add(addMedicalRecordItem);
         medicalRecordMenu.add(addMedicalEntryItem);
@@ -75,6 +77,7 @@ public class HospitalManagementSystemGUI {
         addDoctorItem.addActionListener(e -> addDoctor());
         addPatientItem.addActionListener(e -> addPatient());
         scheduleAppointmentItem.addActionListener(e -> scheduleAppointment());
+        cancelAppointmentItem.addActionListener(e -> cancelAppointment());
         viewDoctorAppointmentsItem.addActionListener(e -> viewDoctorAppointments());
         listDoctorsItem.addActionListener(e -> listDoctors());
         listPatientsItem.addActionListener(e -> listPatients());
@@ -220,6 +223,20 @@ public class HospitalManagementSystemGUI {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(frame, "Error scheduling appointment: " + e.getMessage(),
                         "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void cancelAppointment() {
+        String appointmentId = JOptionPane.showInputDialog(frame, "Enter Appointment ID:");
+        if (appointmentId != null && !appointmentId.trim().isEmpty()) {
+            Appointment appointment = hospital.findAppointmentById(appointmentId);
+            if (appointment != null) {
+                appointment.cancelAppointment(appointment);
+                outputArea.append("Appointment cancelled successfully:\n");
+                outputArea.append("Appointment ID: " + appointmentId + "\n\n");
+            } else {
+                JOptionPane.showMessageDialog(frame, "Appointment not found", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

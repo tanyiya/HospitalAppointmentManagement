@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Doctor extends Person {
     private String doctorID;
@@ -10,6 +11,10 @@ public class Doctor extends Person {
         this.doctorID = doctorID;
         this.specialization = specialization;
         this.appointments = new ArrayList<>();
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 
     public void addAppointment(Appointment appointment) {

@@ -17,7 +17,7 @@ public class Hospital {
 
     public void addPatient(Patient patient) {
         patients.add(patient);
-        System.out.println("Doctor added -> " + patient);
+        System.out.println("Patient added -> " + patient);
     }
 
     public Doctor findDoctorById(String id) {
@@ -33,6 +33,17 @@ public class Hospital {
         for (Patient p : patients) {
             if (p.getPatientID().equals(id)) {
                 return p;
+            }
+        }
+        return null;
+    }
+
+    public Appointment findAppointmentById(String appointmentID) {
+        for (Doctor d : doctors) {
+            for (Appointment a : d.getAppointments()) {
+                if (a.getAppointmentID().equals(appointmentID)) {
+                    return a;
+                }
             }
         }
         return null;
