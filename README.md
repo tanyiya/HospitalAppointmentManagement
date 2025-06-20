@@ -52,6 +52,7 @@ public class Patient extends Person {
     private String patientID;
     private ArrayList<MedicalRecord> medicalRecords;
 }
+```
 
 
 #### Sample Output + Screenshots of Program
