@@ -16,17 +16,17 @@
 
 #### Table of Content
 1. [Project Description](#project-description)
-2. [Implementation of Concepts](#imp-concept)
-    - [ArrayList](#arr-list)
-    - [Class Relationship](#imp-classrel)
-        - [Assocation](#assoc)
-        - [Aggregation](#aggre)
-        - [Composition](#compo)
-    - [Inheritance](#inherit)
-    - [Polymorphism](#poly)
-    - [Exception Handling](#exp-handling)
-3. [Sample Output + Screenshots of Program](#output-sc)
-4. [UML Class Diagram](#uml-dia)
+2. [Implementation of Concepts](#implementation-of-concepts)
+    - [ArrayList](#arraylist)
+    - [Class Relationship](#class-relationship)
+        - [Assocation](#association)
+        - [Aggregation](#aggregation)
+        - [Composition](#composition)
+    - [Inheritance](#inheritance)
+    - [Polymorphism](#polymorphism)
+    - [Exception Handling](#exception-handling)
+3. [Sample Output + Screenshots of Program](#sample-output--screenshots-of-program)
+4. [UML Class Diagram](#uml-class-diagram)
 
 #### Project Description
 The Hospital Appointment Management System is a Java-based desktop application developed to help hospital administrators efficiently manage patient information, doctor records, appoinment and medical records.
@@ -39,9 +39,9 @@ This system features a user-friendly Java Swing GUI, allowing administrators to:
 
 This system improves workflow, minimizes human error in scheduling and ensures organized data management in a clinical setting. 
 
-#### Implementation of Concepts {#imp-concept}
+#### Implementation of Concepts
 
-##### ArrayList {#arr-list}
+##### ArrayList
 In this project, ArrayList is used to manage dynamic collections of object. To use ArrayList, we import the ```java.util.ArrayList``` package on each class. Below are the classes that implements ArrayList:
 1. Hospital
 - ```private List<Doctor> doctors;``` : Records list of Doctor in a Hospital
@@ -55,9 +55,9 @@ In this project, ArrayList is used to manage dynamic collections of object. To u
 
 The usage of ArrayList allows effecient addition, removal, retrieval and iteration of elements stored, using the built in methods alone. Examples of built in methods implemented are ```add()``` and ```remove()```, implemented in adding doctor and patient, adding medical record of patient, adding detail entry in medical record and add or remove appointments.
 
-##### Class Relationship {#imp-classrel}
+##### Class Relationship
 In this system, class relationship are expressed using Association, Aggregation and Composition concept.
-1. ##### Association {#assoc}
+1. ##### Association
 Association relationship is implemented when classes connect or interact with each other, but their lifecycles are not tied to one another. An object of one class can exist without an object of the other. Association is implemented in:
 
 * **`Doctor` and `Appointment`:** A `Doctor` is associated with one or more `Appointment`s. An appointment is a separate concept that links a doctor and a patient, and its lifecycle is managed independently. The `Doctor` class contains an `ArrayList` of `Appointment` objects (`appointments: ArrayList<Appointment>`).
@@ -68,19 +68,19 @@ Association relationship is implemented when classes connect or interact with ea
 
 * **`HospitalManagementSystemGui` and `Hospital`:** The GUI class interacts with the `Hospital` object to manage the system, but the core `Hospital` data can exist independently of the graphical interface. The `HospitalManagementSystemGui` class has an instance variable of type `Hospital` (`hospital: Hospital`) to access and manipulate its data.
 
-2. ##### Aggregation {#aggre}
+2. ##### Aggregation
 Aggregation relationship is a more specific type of association that represents a "whole-part" relationship, which a "Part" can exist without a "Whole". In this project, Aggregation is implemented in **Hospital ↔ Doctor** and **Hospital ↔ Patient** class.
 
 The Hospital class has a `List` of `Doctor` objects (`doctors: List<Doctor>`). The `Hospital` class can add (`addDoctor`) and find (`findDoctorById`, `listDoctors`) doctors from its list. While the `Hospital` manages this list, the `Doctor` objects have their own independent lifecycles. Removing a `Hospital` object would not necessarily mean the `Doctor` objects are deleted from the system. The same applies to ```Patient```.
 <br>
 
-3. ##### Composition {#compo}
+3. ##### Composition
 Composition is a strong form of aggregation, which differs by "part" cannot exist without a "whole". In this project, composition is shown in the **Patient ↔ MedicalRecord** class.
 
 The `Patient` class contains an `ArrayList` of `MedicalRecord` objects (`medicalRecords: ArrayList<MedicalRecord>`). When a `Patient` object is created, it is responsible for creating and managing its `MedicalRecord` objects. If a `Patient` object is deleted from the system, all of its associated `MedicalRecord` objects must also be deleted.
 
 
-##### Inheritance {#inherit}
+##### Inheritance
 The system uses inheritance to reduce code redundancy. A base class ```Person``` contains common attributes such as ```name```, ```age``` and ```gender```. Both ```Doctor``` and ```Patient``` classes extend ```Person``` and inherit these properties. 
 ``` java
 public class Person {
@@ -104,7 +104,7 @@ public class Patient extends Person {
 ```
 This hierarchical relationship produces cleaner and more maintainable code through a structured class inheritance tree. 
 
-##### Polymorphism {#poly}
+##### Polymorphism
 Polymorphism is achieved through method overriding. For example, the ```toString()``` method is overridden in multiple classes to display specific details depending on the object type. 
 ```java
 @Override
@@ -115,7 +115,7 @@ public String toString() {
 This allows flexible object handling, especially when displaying information in the GUI.
 
 
-##### Exception Handling {#exp-handling}
+##### Exception Handling
 A custom exception class named ```InvalidAppoinmentException``` is implemented to handle appointment-related errors.
 ```java
 public class InvalidAppointmentException extends Exception {
@@ -145,7 +145,7 @@ try {
 ```
 This makes sure the system shows helpful messages to the user if anything goes wrong, like missing IDs or wrong input. 
 
-#### Sample Output + Screenshots of Program {#output-sc}
+#### Sample Output + Screenshots of Program
 
 <figure>
 <figcaption>Header of Output Program</figcaption>
@@ -261,7 +261,7 @@ Doctor ID: D002, Name: Dr. Yong Yi Ling, Specialization: Internal Medicine
 Patient ID: P001, Name: Tan Ya Ya, Age: 1, Gender: Female
 ```
 
-#### UML Class Diagram {#uml-dia}
+#### UML Class Diagram
 <figure>
 <figcaption>Class Diagram for Hospital Appointment Management System<figcaption>
     <img src="/img/ClassDiagram.png">
