@@ -1,10 +1,34 @@
-## Hospital Appointment Management System
 
-#### Team Double Tea
-1. Tan Yi Ya A23CS0187
-2. Teh Ru Qian A23CS0191
+<center>
+<h4> SECJ2154 Object Oriented Programming
+<h4> Section 3
+<h4>Hospital Appointment Management System
+<h4> Lecturer: Dr. Muhammad Khatibsyarbini
+</center>
 
-#### Project Description
+##### Team Double Tea
+
+| Student Name  | Matric No.|
+| :-----------: | :---------------: |
+| Tan Yi Ya  | A23CS0187 |
+|Teh Ru Qian | A23CS0191 |
+
+
+#### Table of Content
+1. [Project Description](#project-desc)
+2. [Implementation of Concepts](#imp-concept)
+    - [ArrayList](#arr-list)
+    - [Class Relationship](#imp-classrel)
+        - [Assocation](#assoc)
+        - [Aggregation](#aggre)
+        - [Composition](#compo)
+    - [Inheritance](#inherit)
+    - [Polymorphism](#poly)
+    - [Exception Handling](#exp-handling)
+3. [Sample Output + Screenshots of Program](#output-sc)
+4. [UML Class Diagram](#uml-dia)
+
+#### Project Description {#project-desc}
 The Hospital Appointment Management System is a Java-based desktop application developed to help hospital administrators efficiently manage patient information, doctor records, appoinment and medical records.
 
 This system features a user-friendly Java Swing GUI, allowing administrators to: 
@@ -15,25 +39,48 @@ This system features a user-friendly Java Swing GUI, allowing administrators to:
 
 This system improves workflow, minimizes human error in scheduling and ensures organized data management in a clinical setting. 
 
-#### Implementation of Concepts
+#### Implementation of Concepts {#imp-concept}
 
-##### ArrayList
+##### ArrayList {#arr-list}
 In this project, ArrayList is used to manage dynamic collections of object. To use ArrayList, we import the ```java.util.ArrayList``` package on each class. Below are the classes that implements ArrayList:
->1. Hospital
->- ```private List<Doctor> doctors;``` : Records list of Doctor in a Hospital
->- ```private List<Patient> patients;``` : Records list of Patient in a Hospital
->2. Patient
->- ```private ArrayList<MedicalRecord> medicalRecords;``` : Records list of Medical Record Histories of a Patient
->3. Doctor
->- ```private ArrayList<Appointment> appointments;``` : Records list of Appointments of a doctor
->4. Medical Record
->- ```private ArrayList<String> details;``` : Records list of details entry of a Patient's Medical Record
+1. Hospital
+- ```private List<Doctor> doctors;``` : Records list of Doctor in a Hospital
+- ```private List<Patient> patients;``` : Records list of Patient in a Hospital
+2. Patient
+- ```private ArrayList<MedicalRecord> medicalRecords;``` : Records list of Medical Record Histories of a Patient
+3. Doctor
+- ```private ArrayList<Appointment> appointments;``` : Records list of Appointments of a doctor
+4. Medical Record
+- ```private ArrayList<String> details;``` : Records list of details entry of a Patient's Medical Record
 
-The usage of ArrayList allows effecient addition, removal, retrieval and iteration of elements stored, using the built in methods alone. Examples of built in methods implemented are ```add()``` and ```remove()```.
+The usage of ArrayList allows effecient addition, removal, retrieval and iteration of elements stored, using the built in methods alone. Examples of built in methods implemented are ```add()``` and ```remove()```, implemented in adding doctor and patient, adding medical record of patient, adding detail entry in medical record and add or remove appointments.
 
-##### Class Relationship
+##### Class Relationship {#imp-classrel}
+In this system, class relationship are expressed using Association, Aggregation and Composition concept.
+1. ##### Association {#assoc}
+Association relationship is implemented when classes connect or interact with each other, but their lifecycles are not tied to one another. An object of one class can exist without an object of the other. Association is implemented in:
 
-##### Inheritance
+* **`Doctor` and `Appointment`:** A `Doctor` is associated with one or more `Appointment`s. An appointment is a separate concept that links a doctor and a patient, and its lifecycle is managed independently. The `Doctor` class contains an `ArrayList` of `Appointment` objects (`appointments: ArrayList<Appointment>`).
+<br>
+
+* **`Patient` and `Appointment`:** Similarly, a `Patient` is associated with one or more `Appointment`s. The `Appointment` is a standalone object that contains details about the patient and doctor. The `Appointment` class stores the `patientID` and `doctor` information, creating a link between the involved objects.
+<br>
+
+* **`HospitalManagementSystemGui` and `Hospital`:** The GUI class interacts with the `Hospital` object to manage the system, but the core `Hospital` data can exist independently of the graphical interface. The `HospitalManagementSystemGui` class has an instance variable of type `Hospital` (`hospital: Hospital`) to access and manipulate its data.
+
+2. ##### Aggregation {#aggre}
+Aggregation relationship is a more specific type of association that represents a "whole-part" relationship, which a "Part" can exist without a "Whole". In this project, Aggregation is implemented in **Hospital ↔ Doctor** and **Hospital ↔ Patient** class.
+
+The Hospital class has a `List` of `Doctor` objects (`doctors: List<Doctor>`). The `Hospital` class can add (`addDoctor`) and find (`findDoctorById`, `listDoctors`) doctors from its list. While the `Hospital` manages this list, the `Doctor` objects have their own independent lifecycles. Removing a `Hospital` object would not necessarily mean the `Doctor` objects are deleted from the system. The same applies to ```Patient```.
+<br>
+
+3. ##### Composition {#compo}
+Composition is a strong form of aggregation, which differs by "part" cannot exist without a "whole". In this project, composition is shown in the **Patient ↔ MedicalRecord** class.
+
+The `Patient` class contains an `ArrayList` of `MedicalRecord` objects (`medicalRecords: ArrayList<MedicalRecord>`). When a `Patient` object is created, it is responsible for creating and managing its `MedicalRecord` objects. If a `Patient` object is deleted from the system, all of its associated `MedicalRecord` objects must also be deleted.
+
+
+##### Inheritance {#inherit}
 The system uses inheritance to reduce code redundancy. A base class ```Person``` contains common attributes such as ```name```, ```age``` and ```gender```. Both ```Doctor``` and ```Patient``` classes extend ```Person``` and inherit these properties. 
 ``` java
 public class Person {
@@ -57,7 +104,7 @@ public class Patient extends Person {
 ```
 This hierarchical relationship produces cleaner and more maintainable code through a structured class inheritance tree. 
 
-##### Polymorphism
+##### Polymorphism {#poly}
 Polymorphism is achieved through method overriding. For example, the ```toString()``` method is overridden in multiple classes to display specific details depending on the object type. 
 ```java
 @Override
@@ -68,7 +115,7 @@ public String toString() {
 This allows flexible object handling, especially when displaying information in the GUI.
 
 
-##### Exception Handling
+##### Exception Handling {#exp-handling}
 A custom exception class named ```InvalidAppoinmentException``` is implemented to handle appointment-related errors.
 ```java
 public class InvalidAppointmentException extends Exception {
@@ -82,6 +129,7 @@ It is used when a doctor or patient is not found:
 >- It checks if the doctor or patient exists.
 >- If either is missing, it throws a custom exception:```InvalidAppointmentException```.
 >- The error is caught and shown to the user using a pop-up message.
+
 
 ```java
 try {
@@ -97,7 +145,7 @@ try {
 ```
 This makes sure the system shows helpful messages to the user if anything goes wrong, like missing IDs or wrong input. 
 
-#### Sample Output + Screenshots of Program
+#### Sample Output + Screenshots of Program {#output-sc}
 
 <figure>
 <figcaption>Header of Output Program</figcaption>
@@ -121,6 +169,11 @@ This makes sure the system shows helpful messages to the user if anything goes w
 </figure>
 
 <figure>
+<figcaption>Enter Appointment ID to cancel appointment.</figcaption>
+    <img src="/img/cancelApp.png">
+</figure>
+
+<figure>
 <figcaption>Enter Doctor ID to View Appointment of the doctor.</figcaption>
     <img src="/img/viewDocApp.png">
 </figure>
@@ -140,17 +193,75 @@ This makes sure the system shows helpful messages to the user if anything goes w
 </figure>
     <img src="/img/printMedRecord.png">
 
-<figure>
-<figcaption>Full output of the process carried out above.</figcaption>
-    <img src="/img/out1.png">
-</figure>
+This is the output of program given the following process are carried out:
+1. add two doctors D001, D002 and a patient P001
+2. schedule appointment for patient P001 with doctor D001 which has code A001
+3. cancel the appointment A001, view appointment of D001
+4. reschedule an appointment for patient P001 with doctor D002, view appointment of D002
+5. create Medical Record MR001 for patient P001 and record two entries: fever and cough
+6. print the list of Medical Record for patient P001
+7. print the list of Doctors and Patient
+```
+Doctor added successfully:
+Name: Khatib, ID: D001, Specialization: Pediatrics
 
-<figure>
-<figcaption>Additionally, the output of doctor list and patient list.<figcaption>
-    <img src="/img/out2.png">
-</figure>
+Doctor added successfully:
+Name: Yong Yi Ling, ID: D002, Specialization: Internal Medicine
 
-#### UML Class Diagram
+Patient added successfully:
+Name: Tan Ya Ya, ID: P001
+
+Appointment scheduled successfully:
+Appointment ID: A001
+Patient ID: P001
+Doctor ID: D001
+Date & Time: 2025-06-21 09:30
+
+Appointment cancelled successfully:
+Appointment ID: A001
+
+Appointments of D001:
+
+Appointment scheduled successfully:
+Appointment ID: A002
+Patient ID: P001
+Doctor ID: D002
+Date & Time: 2025-06-20 15:09
+
+Appointments of D002:
+Appointment ID: A002, DateTime: 2025-06-20 T15:09, Patient: P001
+
+Medical record created successfully:
+Patient ID: P001
+Record ID: MR001
+
+Medical record entry added successfully:
+Medical Record ID: MR001
+Patient ID: P001
+- Fever
+
+Medical record entry added successfully:
+Medical Record ID: MR001
+Patient ID: P001
+- Fever
+- Cough
+
+List of Medical Records of P001:
+Medical Record ID: MR001
+Patient ID: P001
+- Fever
+- Cough
+
+
+--- Doctor List ---
+Doctor ID: D001, Name: Dr. Khatib, Specialization: Pediatrics
+Doctor ID: D002, Name: Dr. Yong Yi Ling, Specialization: Internal Medicine
+
+--- Patient List ---
+Patient ID: P001, Name: Tan Ya Ya, Age: 1, Gender: Female
+```
+
+#### UML Class Diagram {#uml-dia}
 <figure>
 <figcaption>Class Diagram for Hospital Appointment Management System<figcaption>
     <img src="/img/ClassDiagram.png">
