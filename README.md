@@ -15,7 +15,7 @@
 
 
 #### Table of Content
-1. [Project Description](#project-desc)
+1. [Project Description](#project-description)
 2. [Implementation of Concepts](#imp-concept)
     - [ArrayList](#arr-list)
     - [Class Relationship](#imp-classrel)
@@ -28,7 +28,7 @@
 3. [Sample Output + Screenshots of Program](#output-sc)
 4. [UML Class Diagram](#uml-dia)
 
-#### Project Description {#project-desc}
+#### Project Description
 The Hospital Appointment Management System is a Java-based desktop application developed to help hospital administrators efficiently manage patient information, doctor records, appoinment and medical records.
 
 This system features a user-friendly Java Swing GUI, allowing administrators to: 
